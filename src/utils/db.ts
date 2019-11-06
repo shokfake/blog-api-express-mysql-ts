@@ -9,7 +9,7 @@ export function getConnection(): Promise<Connection> {
     username: process.env.DB_USER || '',
     password: process.env.DB_PWD || '',
     database: process.env.DB_NAME || '',
-    entities: [`${__dirname}/entity/*.js`],
+    entities: [`${__dirname}/../entities/*.ts`],
     synchronize: true
   };
   return createConnection(opts);
