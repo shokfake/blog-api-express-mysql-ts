@@ -4,13 +4,13 @@ import { OK, INTERNAL_SERVER_ERROR } from 'http-status-codes';
 import User from '../entities/User';
 import { getConnection, respond } from '../utils';
 
-const router: Router = new Router();
+const router = Router();
 
 // todo: add api docs
 // todo: add request validator
 router.post('/', async (req: Request, res: Response) => {
   const { username, displayName, bio, birthDate } = req.body;
-  let connection: Connection;
+  let connection: Connection | undefined;
   try {
     connection = await getConnection();
     const user = new User(username, displayName, bio, birthDate);

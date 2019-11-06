@@ -4,7 +4,7 @@ import { Response } from 'express';
 export function respond(
   res: Response,
   status: number,
-  data: any,
+  data: any = undefined,
   contentType = 'application/json'
 ): void {
   res.writeHead(status, {
