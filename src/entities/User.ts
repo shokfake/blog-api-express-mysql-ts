@@ -20,6 +20,7 @@ export default class User {
   @Column('timestamp', { default: () => 'CURRENT_TIMESTAMP' })
   public createDate!: Date;
 
+  // todo: research how can I add an "onUpdate" value
   @Column('timestamp', { default: () => 'CURRENT_TIMESTAMP' })
   public lastUpdated!: Date;
 
