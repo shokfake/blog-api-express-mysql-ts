@@ -1,6 +1,7 @@
 import { Response } from 'express';
 
-export default function respond(
+// eslint-disable-next-line import/prefer-default-export
+export function respond(
   res: Response,
   status: number,
   data: any,

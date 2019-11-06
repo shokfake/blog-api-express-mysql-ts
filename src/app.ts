@@ -2,7 +2,7 @@ import express, { Request, Response } from 'express';
 import cors from 'cors';
 import bodyParser from 'body-parser';
 import { OK } from 'http-status-codes';
-import respond from './utils/response';
+import { respond } from './utils';
 
 const app = express();
 
