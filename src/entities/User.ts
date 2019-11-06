@@ -21,4 +21,19 @@ export default class User {
     default: ''
   })
   public bio: string;
+
+  @Column()
+  public birthDate: Date;
+
+  constructor(
+    username: string,
+    displayName: string,
+    bio: string,
+    birthDate: Date
+  ) {
+    this.username = username;
+    this.displayName = displayName;
+    this.bio = bio;
+    this.birthDate = birthDate;
+  }
 }
