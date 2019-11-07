@@ -17,11 +17,11 @@ export default class User {
   @Column()
   public birthDate: Date;
 
-  @Column('timestamp', { default: () => 'CURRENT_TIMESTAMP' })
+  @Column('timestamp', { default: 'CURRENT_TIMESTAMP' })
   public createDate!: Date;
 
   // todo: research how can I add an "onUpdate" value
-  @Column('timestamp', { default: () => 'CURRENT_TIMESTAMP' })
+  @Column('timestamp', { default: 'CURRENT_TIMESTAMP' })
   public lastUpdated!: Date;
 
   @Column({ default: true })

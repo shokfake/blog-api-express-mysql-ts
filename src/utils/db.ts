@@ -1,8 +1,7 @@
 import { createConnection, Connection, ConnectionOptions } from 'typeorm';
 
-// eslint-disable-next-line import/prefer-default-export
-export function getConnection(): Promise<Connection> {
-  const opts: ConnectionOptions = {
+export function getConnectionOptions(): ConnectionOptions {
+  return {
     type: 'mysql',
     host: process.env.DB_HOST || '',
     port: parseInt(process.env.DB_PORT || '3306', 10),
@@ -12,5 +11,9 @@ export function getConnection(): Promise<Connection> {
     entities: [`${__dirname}/../entities/*.ts`],
     synchronize: true
   };
+}
+
+export function getConnection(): Promise<Connection> {
+  const opts: ConnectionOptions = getConnectionOptions();
   return createConnection(opts);
 }
