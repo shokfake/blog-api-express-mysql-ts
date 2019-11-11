@@ -14,15 +14,15 @@ export default class User {
   @Column({ length: 255, default: '' })
   public bio: string;
 
-  @Column()
-  public birthDate: Date;
+  @Column('date')
+  public birthDate: string;
 
   @Column('timestamp', { default: 'CURRENT_TIMESTAMP' })
-  public createDate!: Date;
+  public createDate!: string;
 
   // todo: research how can I add an "onUpdate" value
   @Column('timestamp', { default: 'CURRENT_TIMESTAMP' })
-  public lastUpdated!: Date;
+  public lastUpdated!: string;
 
   @Column({ default: true })
   public status!: boolean;
@@ -31,7 +31,7 @@ export default class User {
     username: string,
     displayName: string,
     bio: string,
-    birthDate: Date
+    birthDate: string
   ) {
     this.username = username;
     this.displayName = displayName;

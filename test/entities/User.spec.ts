@@ -6,7 +6,7 @@ describe('user entity tests', () => {
     const username = 'fake-username';
     const displayName = 'fake-display-name';
     const bio = 'fake-bio';
-    const birthDate = new Date();
+    const birthDate = '1991-12-16';
     const user = new User(username, displayName, bio, birthDate);
     expect(user.username).toBe(username);
     expect(user.displayName).toBe(displayName);
