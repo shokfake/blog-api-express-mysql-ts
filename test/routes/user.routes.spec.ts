@@ -2,7 +2,7 @@ import expect from 'expect';
 import sinon, { SinonStubbedInstance, SinonStub } from 'sinon';
 import request, { Response } from 'supertest';
 import { Connection, EntityManager } from 'typeorm';
-import {CONFLICT, INTERNAL_SERVER_ERROR, OK} from 'http-status-codes';
+import { CONFLICT, INTERNAL_SERVER_ERROR, OK } from 'http-status-codes';
 import app from '../../src/app';
 import * as utils from '../../src/utils';
 import User from '../../src/entities/User';
@@ -100,6 +100,24 @@ describe('user routes tests', () => {
     const error = { code: 'FAKE-CODE' };
     (connectionStub.manager.save as SinonStub).throws(error);
 
+    request(app)
+      .post('/api/v1/users')
+      .send(userData)
+      .expect('Content-Type', /json/)
+      .expect(INTERNAL_SERVER_ERROR)
+      .end((err, res: Response) => {
+        if (err) {
+          done(err);
+        } else {
+          const { body } = res;
+          expect(body).toEqual({ message: 'Unknown error.' });
+          done();
+        }
+      });
+  });
+
+  it("shouldn't call close in connection if failed to establish connection", done => {
+    getConnectionStub.throws({ fake: 'error' });
     request(app)
       .post('/api/v1/users')
       .send(userData)
