@@ -1,5 +1,5 @@
 import expect from 'expect';
-import User from '../../src/entities/User';
+import User, { currentTimestamp } from '../../src/entities/User';
 
 describe('user entity tests', () => {
   it('can create an instance of the User entity', () => {
@@ -12,5 +12,9 @@ describe('user entity tests', () => {
     expect(user.displayName).toBe(displayName);
     expect(user.bio).toBe(bio);
     expect(user.birthDate).toBe(birthDate);
+  });
+
+  it('should return CURRENT_TIMESTAMP', () => {
+    expect(currentTimestamp()).toBe('CURRENT_TIMESTAMP');
   });
 });

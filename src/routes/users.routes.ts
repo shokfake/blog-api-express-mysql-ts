@@ -23,7 +23,7 @@ router.post(
       if (e.code === 'ER_DUP_ENTRY') {
         respond(res, CONFLICT, { message: 'Username is already taken.' });
       } else {
-        respond(res, INTERNAL_SERVER_ERROR, 'Unknown error.');
+        respond(res, INTERNAL_SERVER_ERROR, { message: 'Unknown error.' });
       }
     } finally {
       if (connection) {

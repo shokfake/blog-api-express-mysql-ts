@@ -1,5 +1,7 @@
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
+export const currentTimestamp = (): string => 'CURRENT_TIMESTAMP';
+
 @Entity()
 export default class User {
   @PrimaryGeneratedColumn()
@@ -17,11 +19,11 @@ export default class User {
   @Column('date')
   public birthDate: string;
 
-  @Column('timestamp', { default: () => 'CURRENT_TIMESTAMP' })
+  @Column('timestamp', { default: currentTimestamp })
   public createDate!: Date;
 
   // todo: research how can I add an "onUpdate" value
-  @Column('timestamp', { default: () => 'CURRENT_TIMESTAMP' })
+  @Column('timestamp', { default: currentTimestamp })
   public lastUpdated!: Date;
 
   @Column({ default: true })
