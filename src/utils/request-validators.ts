@@ -1,15 +1,20 @@
-import { body, validationResult, ValidationChain } from 'express-validator';
+import {
+  body,
+  validationResult,
+  ValidationChain,
+  ValidationError
+} from 'express-validator';
 import { Request } from 'express';
 
-export function validationHandler(req: Request): void {
+export function getValidationErrors(req: Request): string[] {
   const errors = validationResult(req);
+  const messages: string[] = [];
   if (!errors.isEmpty()) {
-    const msg = errors
-      .array()
-      .map(i => `'${i.param}': ${i.msg}`)
-      .join(',\n');
-    throw new Error(msg);
+    errors.array().forEach((err: ValidationError) => {
+      messages.push(err.msg);
+    });
   }
+  return messages;
 }
 
 export function getPostUserValidators(): ValidationChain[] {
