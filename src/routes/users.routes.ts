@@ -1,16 +1,27 @@
 import { Connection } from 'typeorm';
 import { Router, Request, Response } from 'express';
-import { OK, INTERNAL_SERVER_ERROR, CONFLICT } from 'http-status-codes';
+import { OK, INTERNAL_SERVER_ERROR, CONFLICT, BAD_REQUEST } from 'http-status-codes';
 import User from '../entities/User';
-import { getConnection, respond } from '../utils';
+import {
+  getConnection,
+  respond,
+  validationHandler,
+  getPostUserValidators
+} from '../utils';
 
 const router = Router();
 
 // todo: add api docs
-// todo: add request validator
 router.post(
   '/',
+  getPostUserValidators(),
   async (req: Request, res: Response): Promise<void> => {
+    try {
+      validationHandler(req);
+    } catch (e) {
+      respond(res, BAD_REQUEST, { message: e.message });
+      return;
+    }
     const { username, displayName, bio, birthDate } = req.body;
     let connection: Connection | undefined;
     try {
