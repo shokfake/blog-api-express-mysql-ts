@@ -2,7 +2,12 @@ import expect from 'expect';
 import sinon, { SinonStubbedInstance, SinonStub } from 'sinon';
 import request, { Response } from 'supertest';
 import { Connection, EntityManager } from 'typeorm';
-import { CONFLICT, INTERNAL_SERVER_ERROR, OK } from 'http-status-codes';
+import {
+  BAD_REQUEST,
+  CONFLICT,
+  INTERNAL_SERVER_ERROR,
+  OK
+} from 'http-status-codes';
 import app from '../../src/app';
 import * as utils from '../../src/utils';
 import User from '../../src/entities/User';
@@ -129,6 +134,53 @@ describe('user routes tests', () => {
         } else {
           const { body } = res;
           expect(body).toEqual({ message: 'Unknown error.' });
+          done();
+        }
+      });
+  });
+
+  it('should return bad request if body is incomplete', done => {
+    getConnectionStub.throws({ fake: 'error' });
+    request(app)
+      .post('/api/v1/users')
+      .send({})
+      .expect('Content-Type', /json/)
+      .expect(BAD_REQUEST)
+      .end((err, res: Response) => {
+        if (err) {
+          done(err);
+        } else {
+          const { body } = res;
+          expect(body.messages).toBeDefined();
+          expect(body.messages).toContain('Parameter "username" is required.');
+          expect(body.messages).toContain(
+            'Parameter "username" length must be between 1 and 16 characters.'
+          );
+          expect(body.messages).toContain(
+            'Parameter "displayName" is required.'
+          );
+          expect(body.messages).toContain(
+            'Parameter "displayName" length must be between 1 and 16 characters.'
+          );
+          expect(body.messages).toContain('Parameter "birthDate" is required.');
+          done();
+        }
+      });
+  });
+
+  it('should return bad request if birthDate is greater than today', done => {
+    getConnectionStub.throws({ fake: 'error' });
+    request(app)
+      .post('/api/v1/users')
+      .send({ ...userData, birthDate: new Date().addDays(1) })
+      .expect('Content-Type', /json/)
+      .expect(BAD_REQUEST)
+      .end((err, res: Response) => {
+        if (err) {
+          done(err);
+        } else {
+          const { body } = res;
+          expect(body.messages).toBeDefined();
           done();
         }
       });

@@ -14,8 +14,8 @@
     "build": "tsc -p .",
     "lint": "eslint src --ext .ts,.tsx",
     "lint:fix": "eslint src --ext .ts,.tsx --fix",
-    "test": "mocha -r ts-node/register test/**/*.spec.ts",
-    "coverage": "nyc _mocha 'test/**/*.spec.ts' --timeout=3000",
+    "test": "mocha -r ts-node/register test/setup/bootstrapper.ts test/**/*.spec.ts",
+    "coverage": "nyc _mocha test/setup/bootstrapper.ts 'test/**/*.spec.ts' --timeout=3000",
     "clean-docs": "rm -rf docs/build",
     "docs": "yarn clean-docs && apidoc -i src/ -o docs/build"
   },
