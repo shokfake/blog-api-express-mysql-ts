@@ -283,5 +283,61 @@ describe('user routes tests', () => {
           }
         });
     });
+
+    it('should respond 400 if search query parameter is specified but empty', done => {
+      userFindStub.returns([user1] as any);
+      request(app)
+        .get('/api/v1/users?search=')
+        .expect('Content-Type', /json/)
+        .expect(BAD_REQUEST)
+        .end((err, res: Response) => {
+          if (err) {
+            done(err);
+          } else {
+            const { body } = res;
+            expect(body.messages).toBeDefined();
+            expect(body.messages).toContain(
+              'Query parameter "search" length must be between 1 and 255 characters.'
+            );
+            done();
+          }
+        });
+    });
+
+    it('should respond 500 Internal Server Error if unknown error is thrown', done => {
+      const error = { code: 'FAKE-CODE' };
+      userFindStub.throws(error);
+
+      request(app)
+        .get('/api/v1/users')
+        .expect('Content-Type', /json/)
+        .expect(INTERNAL_SERVER_ERROR)
+        .end((err, res: Response) => {
+          if (err) {
+            done(err);
+          } else {
+            const { body } = res;
+            expect(body).toEqual({ message: 'Unknown error.' });
+            done();
+          }
+        });
+    });
+
+    it("shouldn't call close in connection if failed to establish connection", done => {
+      getConnectionStub.throws({ fake: 'error' });
+      request(app)
+        .get('/api/v1/users')
+        .expect('Content-Type', /json/)
+        .expect(INTERNAL_SERVER_ERROR)
+        .end((err, res: Response) => {
+          if (err) {
+            done(err);
+          } else {
+            const { body } = res;
+            expect(body).toEqual({ message: 'Unknown error.' });
+            done();
+          }
+        });
+    });
   });
 });

@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="bd733411-704b-408b-9e87-8966acaf90cb" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/routes/user.routes.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/test/routes/user.routes.spec.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/setup/bootstrapper.ts" beforeDir="false" afterPath="$PROJECT_DIR$/test/setup/bootstrapper.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
-    </list>
+    <list default="true" id="bd733411-704b-408b-9e87-8966acaf90cb" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -18,56 +13,18 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/routes/users.routes.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="388">
-              <caret line="183" column="55" selection-start-line="183" selection-start-column="6" selection-end-line="183" selection-end-column="55" />
-              <folding>
-                <element signature="e#0#43#0" expanded="true" />
-                <element signature="e#352#2329#0" />
-                <element signature="e#3302#5278#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/test/routes/user.routes.spec.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="104">
-              <caret line="270" column="40" selection-start-line="270" selection-start-column="40" selection-end-line="270" selection-end-column="40" />
+            <state relative-caret-position="398">
+              <caret line="29" column="36" lean-forward="true" selection-start-line="29" selection-start-column="36" selection-end-line="29" selection-end-column="36" />
               <folding>
                 <element signature="e#0#28#0" expanded="true" />
-                <element signature="e#327#371#0" expanded="true" />
-                <element signature="e#650#660#0" />
+                <element signature="e#1139#5836#0" />
+                <element signature="e#5878#9984#0" />
               </folding>
             </state>
           </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tsconfig.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="630">
-              <caret line="59" column="46" selection-start-line="59" selection-start-column="46" selection-end-line="59" selection-end-column="46" />
-              <caret line="60" column="46" selection-start-line="60" selection-start-column="46" selection-end-line="60" selection-end-column="46" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test/test-utils.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="297">
-              <caret line="9" selection-start-line="9" selection-end-line="9" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test/setup/bootstrapper.ts">
-          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
     </leaf>
@@ -151,6 +108,12 @@
               <item name="blog-api-express-mysql-ts" type="462c0819:PsiDirectoryNode" />
               <item name="test" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="blog-api-express-mysql-ts" type="b2602c69:ProjectViewProjectNode" />
+              <item name="blog-api-express-mysql-ts" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="routes" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -193,7 +156,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Mocha.user routes tests.GET /api/v1/users.should be able to get a filtered list of users">
+  <component name="RunManager" selected="Mocha.unit test">
     <configuration name="yarn dev" type="NodeJSConfigurationType" path-to-node="$PROJECT_DIR$/node_modules/.bin/ts-node" path-to-js-file="src/index.ts" working-dir="$PROJECT_DIR$">
       <method v="2" />
     </configuration>
@@ -221,52 +184,10 @@
       <test-pattern>test/**/*.spec.ts</test-pattern>
       <method v="2" />
     </configuration>
-    <configuration name="user routes tests.GET /api/v1/users.should be able to get a filtered list of users" type="mocha-javascript-test-runner" temporary="true" nameIsGenerated="true">
-      <node-interpreter>project</node-interpreter>
-      <node-options />
-      <mocha-package>$PROJECT_DIR$/node_modules/mocha</mocha-package>
-      <working-directory>$PROJECT_DIR$</working-directory>
-      <pass-parent-env>true</pass-parent-env>
-      <ui>bdd</ui>
-      <extra-mocha-options>-r ts-node/register test/setup/bootstrapper.ts</extra-mocha-options>
-      <test-kind>TEST</test-kind>
-      <test-file>$PROJECT_DIR$/test/routes/user.routes.spec.ts</test-file>
-      <test-names>
-        <name value="user routes tests" />
-        <name value="GET /api/v1/users" />
-        <name value="should be able to get a filtered list of users" />
-      </test-names>
-      <method v="2" />
-    </configuration>
-    <configuration name="user routes tests.GET /api/v1/users.should be able to get a list of users" type="mocha-javascript-test-runner" temporary="true" nameIsGenerated="true">
-      <node-interpreter>project</node-interpreter>
-      <node-options />
-      <mocha-package>$PROJECT_DIR$/node_modules/mocha</mocha-package>
-      <working-directory>$PROJECT_DIR$</working-directory>
-      <pass-parent-env>true</pass-parent-env>
-      <ui>bdd</ui>
-      <extra-mocha-options>-r ts-node/register test/setup/bootstrapper.ts</extra-mocha-options>
-      <test-kind>TEST</test-kind>
-      <test-file>$PROJECT_DIR$/test/routes/user.routes.spec.ts</test-file>
-      <test-names>
-        <name value="user routes tests" />
-        <name value="GET /api/v1/users" />
-        <name value="should be able to get a list of users" />
-      </test-names>
-      <method v="2" />
-    </configuration>
     <list>
       <item itemvalue="Mocha.unit test" />
       <item itemvalue="Node.js.yarn dev" />
-      <item itemvalue="Mocha.user routes tests.GET /api/v1/users.should be able to get a list of users" />
-      <item itemvalue="Mocha.user routes tests.GET /api/v1/users.should be able to get a filtered list of users" />
     </list>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Mocha.user routes tests.GET /api/v1/users.should be able to get a filtered list of users" />
-        <item itemvalue="Mocha.user routes tests.GET /api/v1/users.should be able to get a list of users" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -282,29 +203,11 @@
       <workItem from="1573492763981" duration="5219000" />
       <workItem from="1573575387582" duration="4868000" />
       <workItem from="1573668560325" duration="3882000" />
-      <workItem from="1573874495566" duration="8065000" />
+      <workItem from="1573874495566" duration="8749000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="user_routes_tests_should_be_able_to_POST_a_user - 2019.11.15 at 22h 39m 00s.xml">
-      <configuration name="user routes tests.should be able to POST a user" configurationId="mocha-javascript-test-runner" />
-    </history-entry>
-    <history-entry file="user_routes_tests_should_be_able_to_POST_a_user - 2019.11.15 at 22h 39m 57s.xml">
-      <configuration name="user routes tests.should be able to POST a user" configurationId="mocha-javascript-test-runner" />
-    </history-entry>
-    <history-entry file="user_routes_tests_should_be_able_to_POST_a_user - 2019.11.15 at 22h 40m 27s.xml">
-      <configuration name="user routes tests.should be able to POST a user" configurationId="mocha-javascript-test-runner" />
-    </history-entry>
-    <history-entry file="user_routes_tests - 2019.11.15 at 22h 40m 49s.xml">
-      <configuration name="user routes tests" configurationId="mocha-javascript-test-runner" />
-    </history-entry>
-    <history-entry file="user_routes_tests - 2019.11.15 at 22h 41m 15s.xml">
-      <configuration name="user routes tests" configurationId="mocha-javascript-test-runner" />
-    </history-entry>
-    <history-entry file="user_routes_tests_GET__api_v1_users_should_be_able_to_get_a_list_of_users - 2019.11.15 at 23h 30m 15s.xml">
-      <configuration name="user routes tests.GET /api/v1/users.should be able to get a list of users" configurationId="mocha-javascript-test-runner" />
-    </history-entry>
     <history-entry file="user_routes_tests_GET__api_v1_users_should_be_able_to_get_a_list_of_users - 2019.11.15 at 23h 30m 35s.xml">
       <configuration name="user routes tests.GET /api/v1/users.should be able to get a list of users" configurationId="mocha-javascript-test-runner" />
     </history-entry>
@@ -317,9 +220,27 @@
     <history-entry file="user_routes_tests_GET__api_v1_users_should_be_able_to_get_a_filtered_list_of_users - 2019.11.15 at 23h 35m 45s.xml">
       <configuration name="user routes tests.GET /api/v1/users.should be able to get a filtered list of users" configurationId="mocha-javascript-test-runner" />
     </history-entry>
+    <history-entry file="user_routes_tests_GET__api_v1_users_should_respond_400_if_search_query_parameter_is_specified_but_empty - 2019.11.15 at 23h 39m 30s.xml">
+      <configuration name="user routes tests.GET /api/v1/users.should respond 400 if search query parameter is specified but empty" configurationId="mocha-javascript-test-runner" />
+    </history-entry>
+    <history-entry file="user_routes_tests_GET__api_v1_users_should_respond_400_if_search_query_parameter_is_specified_but_empty - 2019.11.15 at 23h 40m 01s.xml">
+      <configuration name="user routes tests.GET /api/v1/users.should respond 400 if search query parameter is specified but empty" configurationId="mocha-javascript-test-runner" />
+    </history-entry>
+    <history-entry file="user_routes_tests_GET__api_v1_users_should_respond_400_if_search_query_parameter_is_specified_but_empty - 2019.11.15 at 23h 40m 11s.xml">
+      <configuration name="user routes tests.GET /api/v1/users.should respond 400 if search query parameter is specified but empty" configurationId="mocha-javascript-test-runner" />
+    </history-entry>
+    <history-entry file="user_routes_tests_GET__api_v1_users_should_respond_500_Internal_Server_Error_if_unknown_error_is_thrown - 2019.11.15 at 23h 42m 03s.xml">
+      <configuration name="user routes tests.GET /api/v1/users.should respond 500 Internal Server Error if unknown error is thrown" configurationId="mocha-javascript-test-runner" />
+    </history-entry>
+    <history-entry file="user_routes_tests_GET__api_v1_users_should_respond_500_Internal_Server_Error_if_unknown_error_is_thrown - 2019.11.15 at 23h 42m 33s.xml">
+      <configuration name="user routes tests.GET /api/v1/users.should respond 500 Internal Server Error if unknown error is thrown" configurationId="mocha-javascript-test-runner" />
+    </history-entry>
+    <history-entry file="user_routes_tests_GET__api_v1_users_shouldn't_call_close_in_connection_if_failed_to_establish_connection - 2019.11.15 at 23h 42m 48s.xml">
+      <configuration name="user routes tests.GET /api/v1/users.shouldn't call close in connection if failed to establish connection" configurationId="mocha-javascript-test-runner" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="27098000" />
+    <option name="totallyTimeSpent" value="27782000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -332,8 +253,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1920" height="1052" extended-state="7" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24960506" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24960506" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -348,7 +270,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="TypeScript" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.59347826" />
+      <window_info anchor="bottom" id="Terminal" order="11" weight="0.59347826" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -533,12 +455,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/test/routes/user.routes.spec.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="104">
-          <caret line="270" column="40" selection-start-line="270" selection-start-column="40" selection-end-line="270" selection-end-column="40" />
+        <state relative-caret-position="398">
+          <caret line="29" column="36" lean-forward="true" selection-start-line="29" selection-start-column="36" selection-end-line="29" selection-end-column="36" />
           <folding>
             <element signature="e#0#28#0" expanded="true" />
-            <element signature="e#327#371#0" expanded="true" />
-            <element signature="e#650#660#0" />
+            <element signature="e#1139#5836#0" />
+            <element signature="e#5878#9984#0" />
           </folding>
         </state>
       </provider>
