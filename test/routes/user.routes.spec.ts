@@ -1,7 +1,7 @@
 import expect from 'expect';
 import sinon, { SinonStubbedInstance, SinonStub } from 'sinon';
 import request, { Response } from 'supertest';
-import { Connection, EntityManager } from 'typeorm';
+import { Connection, EntityManager, SaveOptions } from 'typeorm';
 import {
   BAD_REQUEST,
   CONFLICT,
@@ -24,27 +24,31 @@ const userData = {
 describe('user routes tests', () => {
   let getConnectionStub: SinonStub<[], Promise<Connection>>;
   let connectionStub: SinonStubbedInstance<Connection>;
+  let userSaveStub: SinonStub<[(SaveOptions | undefined)?], Promise<User>>;
 
   beforeEach(() => {
     connectionStub = sinon.createStubInstance(Connection);
-    // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
-    // @ts-ignore
-    connectionStub.manager = sinon.createStubInstance(EntityManager);
 
     getConnectionStub = sinon.stub(utils, 'getConnection');
     getConnectionStub.returns(Promise.resolve(connectionStub as any));
+
+    userSaveStub = sinon.stub(User.prototype, 'save');
   });
 
   afterEach(() => {
     getConnectionStub.restore();
+    userSaveStub.restore();
   });
 
   it('should be able to POST a user', done => {
-    (connectionStub.manager.save as SinonStub).returns({
-      ...userData,
-      id: fakeId
-    });
-
+    const fakeUser = new User(
+      userData.username,
+      userData.displayName,
+      userData.bio,
+      userData.birthDate
+    );
+    fakeUser.id = fakeId;
+    userSaveStub.returns(Promise.resolve(fakeUser));
     request(app)
       .post('/api/v1/users')
       .send(userData)
@@ -61,21 +65,8 @@ describe('user routes tests', () => {
           });
           expect(getConnectionStub.called).toBeTruthy();
           expect(getConnectionStub.callCount).toBe(1);
-          const saveMethod = ((connectionStub.manager as any) as SinonStubbedInstance<
-            EntityManager
-          >).save;
-          expect(saveMethod.called).toBeTruthy();
-          expect(saveMethod.callCount).toBe(1);
-          const saveCall = saveMethod.getCall(0);
-          expect(saveCall.args.length).toBe(1);
-          expect(saveCall.args[0]).toEqual(
-            new User(
-              userData.username,
-              userData.displayName,
-              userData.bio,
-              userData.birthDate
-            )
-          );
+          expect(userSaveStub.called).toBeTruthy();
+          expect(userSaveStub.callCount).toBe(1);
           done();
         }
       });
@@ -83,7 +74,7 @@ describe('user routes tests', () => {
 
   it('should respond 409 Conflict if "Username is already taken."', done => {
     const error = { code: 'ER_DUP_ENTRY' };
-    (connectionStub.manager.save as SinonStub).throws(error);
+    userSaveStub.throws(error);
 
     request(app)
       .post('/api/v1/users')
@@ -103,7 +94,7 @@ describe('user routes tests', () => {
 
   it('should respond 500 Internal Server Error if unknown error is thrown', done => {
     const error = { code: 'FAKE-CODE' };
-    (connectionStub.manager.save as SinonStub).throws(error);
+    userSaveStub.throws(error);
 
     request(app)
       .post('/api/v1/users')

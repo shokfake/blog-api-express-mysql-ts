@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bd733411-704b-408b-9e87-8966acaf90cb" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/routes/users.routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/users.routes.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/routes/user.routes.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/test/routes/user.routes.spec.ts" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -15,13 +15,27 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/routes/users.routes.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-24">
-              <caret line="113" column="86" selection-start-line="113" selection-start-column="86" selection-end-line="113" selection-end-column="86" />
+            <state relative-caret-position="357">
+              <caret line="93" column="6" selection-start-line="93" selection-start-column="6" selection-end-line="93" selection-end-column="6" />
               <folding>
                 <element signature="e#0#43#0" expanded="true" />
+                <element signature="e#352#2329#0" />
+                <element signature="e#3302#5278#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/test/routes/user.routes.spec.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="414">
+              <caret line="49" column="25" lean-forward="true" selection-start-line="49" selection-start-column="25" selection-end-line="49" selection-end-column="25" />
+              <folding>
+                <element signature="e#0#28#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -80,7 +94,6 @@
         <option value="$PROJECT_DIR$/test/entities/User.spec.ts" />
         <option value="$PROJECT_DIR$/src/utils/index.ts" />
         <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/test/routes/user.routes.spec.ts" />
         <option value="$PROJECT_DIR$/test/boostrapper.ts" />
         <option value="$PROJECT_DIR$/test/setup/boostrapper.js" />
         <option value="$PROJECT_DIR$/test/setup/boostrapper.ts" />
@@ -88,6 +101,7 @@
         <option value="$PROJECT_DIR$/src/entities/User.ts" />
         <option value="$PROJECT_DIR$/src/utils/request-validators.ts" />
         <option value="$PROJECT_DIR$/src/routes/users.routes.ts" />
+        <option value="$PROJECT_DIR$/test/routes/user.routes.spec.ts" />
       </list>
     </option>
   </component>
@@ -126,23 +140,12 @@
             <path>
               <item name="blog-api-express-mysql-ts" type="b2602c69:ProjectViewProjectNode" />
               <item name="blog-api-express-mysql-ts" type="462c0819:PsiDirectoryNode" />
-              <item name="docs" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="blog-api-express-mysql-ts" type="b2602c69:ProjectViewProjectNode" />
               <item name="blog-api-express-mysql-ts" type="462c0819:PsiDirectoryNode" />
-              <item name="docs" type="462c0819:PsiDirectoryNode" />
-              <item name="build" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="blog-api-express-mysql-ts" type="b2602c69:ProjectViewProjectNode" />
-              <item name="blog-api-express-mysql-ts" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="blog-api-express-mysql-ts" type="b2602c69:ProjectViewProjectNode" />
-              <item name="blog-api-express-mysql-ts" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
               <item name="routes" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
@@ -187,7 +190,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Mocha.user routes tests">
+  <component name="RunManager" selected="Mocha.unit test">
     <configuration name="yarn dev" type="NodeJSConfigurationType" path-to-node="$PROJECT_DIR$/node_modules/.bin/ts-node" path-to-js-file="src/index.ts" working-dir="$PROJECT_DIR$">
       <method v="2" />
     </configuration>
@@ -215,31 +218,10 @@
       <test-pattern>test/**/*.spec.ts</test-pattern>
       <method v="2" />
     </configuration>
-    <configuration name="user routes tests" type="mocha-javascript-test-runner" temporary="true" nameIsGenerated="true">
-      <node-interpreter>project</node-interpreter>
-      <node-options />
-      <mocha-package>$PROJECT_DIR$/node_modules/mocha</mocha-package>
-      <working-directory>$PROJECT_DIR$</working-directory>
-      <pass-parent-env>true</pass-parent-env>
-      <ui>bdd</ui>
-      <extra-mocha-options>-r ts-node/register test/setup/bootstrapper.ts</extra-mocha-options>
-      <test-kind>SUITE</test-kind>
-      <test-file>$PROJECT_DIR$/test/routes/user.routes.spec.ts</test-file>
-      <test-names>
-        <name value="user routes tests" />
-      </test-names>
-      <method v="2" />
-    </configuration>
     <list>
       <item itemvalue="Mocha.unit test" />
-      <item itemvalue="Mocha.user routes tests" />
       <item itemvalue="Node.js.yarn dev" />
     </list>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Mocha.user routes tests" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -255,44 +237,44 @@
       <workItem from="1573492763981" duration="5219000" />
       <workItem from="1573575387582" duration="4868000" />
       <workItem from="1573668560325" duration="3882000" />
-      <workItem from="1573874495566" duration="3595000" />
+      <workItem from="1573874495566" duration="5168000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="user_routes_tests_should_respond_500_Internal_Server_Error_if_unknown_error_is_thrown - 2019.11.11 at 12h 46m 47s.xml">
-      <configuration name="user routes tests.should respond 500 Internal Server Error if unknown error is thrown" configurationId="mocha-javascript-test-runner" />
-    </history-entry>
-    <history-entry file="user_routes_tests_shouldn't_call_close_in_connection_if_failed_to_establish_connection - 2019.11.11 at 12h 50m 51s.xml">
-      <configuration name="user routes tests.shouldn't call close in connection if failed to establish connection" configurationId="mocha-javascript-test-runner" />
-    </history-entry>
-    <history-entry file="user_routes_tests_should_return_bad_request_if_body_is_incomplete - 2019.11.13 at 12h 50m 07s.xml">
-      <configuration name="user routes tests.should return bad request if body is incomplete" configurationId="mocha-javascript-test-runner" />
-    </history-entry>
-    <history-entry file="user_routes_tests_should_return_bad_request_if_body_is_incomplete - 2019.11.13 at 12h 50m 22s.xml">
-      <configuration name="user routes tests.should return bad request if body is incomplete" configurationId="mocha-javascript-test-runner" />
-    </history-entry>
-    <history-entry file="user_routes_tests_should_return_bad_request_if_body_is_incomplete - 2019.11.13 at 12h 52m 37s.xml">
-      <configuration name="user routes tests.should return bad request if body is incomplete" configurationId="mocha-javascript-test-runner" />
-    </history-entry>
-    <history-entry file="user_routes_tests_should_return_bad_request_if_birthDate_is_greater_than_today - 2019.11.13 at 12h 52m 46s.xml">
-      <configuration name="user routes tests.should return bad request if birthDate is greater than today" configurationId="mocha-javascript-test-runner" />
-    </history-entry>
-    <history-entry file="unit_test - 2019.11.13 at 12h 59m 56s.xml">
-      <configuration name="unit test" configurationId="mocha-javascript-test-runner" />
-    </history-entry>
-    <history-entry file="user_routes_tests_should_return_bad_request_if_birthDate_is_greater_than_today - 2019.11.13 at 13h 00m 07s.xml">
-      <configuration name="user routes tests.should return bad request if birthDate is greater than today" configurationId="mocha-javascript-test-runner" />
-    </history-entry>
     <history-entry file="user_routes_tests_should_return_bad_request_if_birthDate_is_greater_than_today - 2019.11.13 at 13h 01m 01s.xml">
       <configuration name="user routes tests.should return bad request if birthDate is greater than today" configurationId="mocha-javascript-test-runner" />
     </history-entry>
     <history-entry file="user_routes_tests - 2019.11.13 at 13h 01m 52s.xml">
       <configuration name="user routes tests" configurationId="mocha-javascript-test-runner" />
     </history-entry>
+    <history-entry file="user_routes_tests_should_be_able_to_POST_a_user - 2019.11.15 at 22h 33m 35s.xml">
+      <configuration name="user routes tests.should be able to POST a user" configurationId="mocha-javascript-test-runner" />
+    </history-entry>
+    <history-entry file="user_routes_tests_should_be_able_to_POST_a_user - 2019.11.15 at 22h 36m 35s.xml">
+      <configuration name="user routes tests.should be able to POST a user" configurationId="mocha-javascript-test-runner" />
+    </history-entry>
+    <history-entry file="user_routes_tests_should_be_able_to_POST_a_user - 2019.11.15 at 22h 38m 40s.xml">
+      <configuration name="user routes tests.should be able to POST a user" configurationId="mocha-javascript-test-runner" />
+    </history-entry>
+    <history-entry file="user_routes_tests_should_be_able_to_POST_a_user - 2019.11.15 at 22h 39m 00s.xml">
+      <configuration name="user routes tests.should be able to POST a user" configurationId="mocha-javascript-test-runner" />
+    </history-entry>
+    <history-entry file="user_routes_tests_should_be_able_to_POST_a_user - 2019.11.15 at 22h 39m 57s.xml">
+      <configuration name="user routes tests.should be able to POST a user" configurationId="mocha-javascript-test-runner" />
+    </history-entry>
+    <history-entry file="user_routes_tests_should_be_able_to_POST_a_user - 2019.11.15 at 22h 40m 27s.xml">
+      <configuration name="user routes tests.should be able to POST a user" configurationId="mocha-javascript-test-runner" />
+    </history-entry>
+    <history-entry file="user_routes_tests - 2019.11.15 at 22h 40m 49s.xml">
+      <configuration name="user routes tests" configurationId="mocha-javascript-test-runner" />
+    </history-entry>
+    <history-entry file="user_routes_tests - 2019.11.15 at 22h 41m 15s.xml">
+      <configuration name="user routes tests" configurationId="mocha-javascript-test-runner" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="22628000" />
+    <option name="totallyTimeSpent" value="24201000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -304,7 +286,8 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1920" height="1052" extended-state="7" />
+    <frame x="0" y="0" width="1920" height="1052" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24960506" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -321,7 +304,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="TypeScript" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.40652174" />
+      <window_info anchor="bottom" id="Terminal" order="11" weight="0.59347826" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -454,16 +437,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/routes/user.routes.spec.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3465">
-          <caret line="165" column="17" lean-forward="true" selection-start-line="165" selection-start-column="17" selection-end-line="165" selection-end-column="17" />
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/entities/User.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="777">
@@ -490,10 +463,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/routes/users.routes.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-24">
-          <caret line="113" column="86" selection-start-line="113" selection-start-column="86" selection-end-line="113" selection-end-column="86" />
+        <state relative-caret-position="357">
+          <caret line="93" column="6" selection-start-line="93" selection-start-column="6" selection-end-line="93" selection-end-column="6" />
           <folding>
             <element signature="e#0#43#0" expanded="true" />
+            <element signature="e#352#2329#0" />
+            <element signature="e#3302#5278#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/routes/user.routes.spec.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="414">
+          <caret line="49" column="25" lean-forward="true" selection-start-line="49" selection-start-column="25" selection-end-line="49" selection-end-column="25" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
           </folding>
         </state>
       </provider>
