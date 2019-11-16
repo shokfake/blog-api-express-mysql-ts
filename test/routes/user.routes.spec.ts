@@ -1,43 +1,61 @@
 import expect from 'expect';
 import sinon, { SinonStubbedInstance, SinonStub } from 'sinon';
 import request, { Response } from 'supertest';
-import { Connection, SaveOptions } from 'typeorm';
+import {
+  Connection,
+  SaveOptions,
+  FindConditions,
+  BaseEntity,
+  Like
+} from 'typeorm';
 import {
   BAD_REQUEST,
   CONFLICT,
   INTERNAL_SERVER_ERROR,
   OK
 } from 'http-status-codes';
+// eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+// @ts-ignore
+import { MockConsole } from '../test-utils';
 import app from '../../src/app';
 import * as utils from '../../src/utils';
 import User from '../../src/entities/User';
 
-const fakeId = 1;
-
-const userData = {
-  username: 'jdoe',
-  displayName: 'John Doe',
-  bio: 'Lorem ipsum dolor sit amet.',
-  birthDate: '1991-12-16'
-};
-
 describe('user routes tests', () => {
+  let mockConsole: MockConsole;
+  let connectionStub: SinonStubbedInstance<Connection>;
+  let getConnectionStub: SinonStub<[], Promise<Connection>>;
+
+  beforeEach(() => {
+    mockConsole = new MockConsole();
+    connectionStub = sinon.createStubInstance(Connection);
+
+    getConnectionStub = sinon.stub(utils, 'getConnection');
+    getConnectionStub.returns(Promise.resolve(connectionStub as any));
+  });
+
+  afterEach(() => {
+    mockConsole.restore();
+    getConnectionStub.restore();
+  });
+
   describe('POST /api/v1/users', () => {
-    let getConnectionStub: SinonStub<[], Promise<Connection>>;
-    let connectionStub: SinonStubbedInstance<Connection>;
     let userSaveStub: SinonStub<[(SaveOptions | undefined)?], Promise<User>>;
 
+    const fakeId = 1;
+
+    const userData = {
+      username: 'jdoe',
+      displayName: 'John Doe',
+      bio: 'Lorem ipsum dolor sit amet.',
+      birthDate: '1991-12-16'
+    };
+
     beforeEach(() => {
-      connectionStub = sinon.createStubInstance(Connection);
-
-      getConnectionStub = sinon.stub(utils, 'getConnection');
-      getConnectionStub.returns(Promise.resolve(connectionStub as any));
-
       userSaveStub = sinon.stub(User.prototype, 'save');
     });
 
     afterEach(() => {
-      getConnectionStub.restore();
       userSaveStub.restore();
     });
 
@@ -177,6 +195,90 @@ describe('user routes tests', () => {
           } else {
             const { body } = res;
             expect(body.messages).toBeDefined();
+            done();
+          }
+        });
+    });
+  });
+
+  describe('GET /api/v1/users', () => {
+    let userFindStub: SinonStub<
+      [(FindConditions<BaseEntity> | undefined)?],
+      Promise<BaseEntity[]>
+    >;
+
+    const user1 = new User(
+      'user1',
+      'User number 1',
+      "I'm number 1!",
+      '1991-12-16'
+    );
+    user1.id = 1;
+
+    const user2 = new User(
+      'user2',
+      'User number 2',
+      "I'm number 2!",
+      '1991-12-16'
+    );
+    user2.id = 2;
+
+    const userList = [user1, user2];
+
+    beforeEach(() => {
+      userFindStub = sinon.stub(User, 'find');
+    });
+
+    afterEach(() => {
+      userFindStub.restore();
+    });
+
+    it('should be able to get a list of users', done => {
+      userFindStub.returns(userList as any);
+      request(app)
+        .get('/api/v1/users')
+        .expect('Content-Type', /json/)
+        .expect(OK)
+        .end((err, res: Response) => {
+          if (err) {
+            done(err);
+          } else {
+            const { body } = res;
+            expect(body).toEqual(userList);
+            expect(getConnectionStub.called).toBeTruthy();
+            expect(getConnectionStub.callCount).toBe(1);
+            expect(userFindStub.called).toBeTruthy();
+            expect(userFindStub.callCount).toBe(1);
+            const findCall = userFindStub.getCall(0);
+            expect(findCall.args.length).toBe(1);
+            expect(findCall.args[0]).toEqual({});
+            done();
+          }
+        });
+    });
+
+    it('should be able to get a filtered list of users', done => {
+      userFindStub.returns([user1] as any);
+      request(app)
+        .get(`/api/v1/users?search=${user1.username}`)
+        .expect('Content-Type', /json/)
+        .expect(OK)
+        .end((err, res: Response) => {
+          if (err) {
+            done(err);
+          } else {
+            const { body } = res;
+            expect(body).toEqual([user1]);
+            expect(getConnectionStub.called).toBeTruthy();
+            expect(getConnectionStub.callCount).toBe(1);
+            expect(userFindStub.called).toBeTruthy();
+            expect(userFindStub.callCount).toBe(1);
+            const findCall = userFindStub.getCall(0);
+            expect(findCall.args.length).toBe(1);
+            const searchText = Like(`%${user1.username}%`);
+            expect(findCall.args[0]).toEqual({
+              where: [{ username: searchText }, { displayName: searchText }]
+            });
             done();
           }
         });
