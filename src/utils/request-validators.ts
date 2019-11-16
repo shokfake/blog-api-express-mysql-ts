@@ -1,5 +1,6 @@
 import {
   body,
+  query,
   validationResult,
   ValidationChain,
   ValidationError
@@ -48,5 +49,16 @@ export function getPostUserValidators(): ValidationChain[] {
         return isValid;
       })
       .withMessage('Parameter "birthDate" cannot be greater than current date.')
+  ];
+}
+
+export function getFindAllUserValidators(): ValidationChain[] {
+  return [
+    query('search')
+      .optional()
+      .isLength({ min: 1, max: 255 })
+      .withMessage(
+        'Query parameter "search" length must be between 1 and 255 characters.'
+      )
   ];
 }

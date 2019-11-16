@@ -1,9 +1,9 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 export const currentTimestamp = (): string => 'CURRENT_TIMESTAMP';
 
 @Entity()
-export default class User {
+export default class User extends BaseEntity {
   @PrimaryGeneratedColumn()
   public id!: number;
 
@@ -35,6 +35,7 @@ export default class User {
     bio: string,
     birthDate: string
   ) {
+    super();
     this.username = username;
     this.displayName = displayName;
     this.bio = bio;

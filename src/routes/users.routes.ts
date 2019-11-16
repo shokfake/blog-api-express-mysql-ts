@@ -1,4 +1,4 @@
-import { Connection } from 'typeorm';
+import { Connection, Like } from 'typeorm';
 import { Router, Request, Response } from 'express';
 import {
   OK,
@@ -11,7 +11,8 @@ import {
   getConnection,
   respond,
   getValidationErrors,
-  getPostUserValidators
+  getPostUserValidators,
+  getFindAllUserValidators
 } from '../utils';
 
 const router = Router();
@@ -80,7 +81,7 @@ router.post(
     try {
       connection = await getConnection();
       const user = new User(username, displayName, bio, birthDate);
-      const result = await connection.manager.save(user);
+      const result = await user.save();
       respond(res, OK, result);
     } catch (e) {
       console.error(e);
@@ -89,6 +90,44 @@ router.post(
       } else {
         respond(res, INTERNAL_SERVER_ERROR, { message: 'Unknown error.' });
       }
+    } finally {
+      if (connection) {
+        await connection.close();
+      }
+    }
+  }
+);
+
+router.get(
+  '/',
+  getFindAllUserValidators(),
+  async (req: Request, res: Response) => {
+    const validationErrors = getValidationErrors(req);
+
+    if (validationErrors.length > 0) {
+      respond(res, BAD_REQUEST, { messages: validationErrors });
+      return;
+    }
+
+    const queryOptions: any = {};
+
+    if (req.query.search) {
+      const searchText = Like(`%${req.query.search}%`);
+      queryOptions.where = [
+        { username: searchText },
+        { displayName: searchText }
+      ];
+    }
+
+    let connection: Connection | undefined;
+
+    try {
+      connection = await getConnection();
+      const users = await User.find(queryOptions);
+      respond(res, OK, users);
+    } catch (e) {
+      console.error(e);
+      respond(res, INTERNAL_SERVER_ERROR, { message: 'Unknown error.' });
     } finally {
       if (connection) {
         await connection.close();
